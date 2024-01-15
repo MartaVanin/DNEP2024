@@ -1,4 +1,6 @@
 Manifest.toml
 .vscode
 data/33Bus-Modified/Profiles/DemandProfiles.csv
+data/33Bus-Modified/Violations
 data/IrishMVGrid/Profiles/DemandProfileDingle.csv
+data/IrishMVGrid/Violations
