@@ -1,1 +1,4 @@
 Manifest.toml
+.vscode
+data/33Bus-Modified/Profiles/DemandProfiles.csv
+data/IrishMVGrid/Profiles/DemandProfileDingle.csv
