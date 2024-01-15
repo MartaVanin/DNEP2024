@@ -1,0 +1,16 @@
+clear
+new circuit.Master33bus ! Name of file Master33bus
+~ basekv=12.66 pu=1.0 phases=3 bus1=1  
+~ Angle=0  MVAsc3=2000000 MVASC1=2100000 ! to make an infinite source
+
+Redirect Transformers.txt 
+Redirect Lines.txt
+Redirect Loads.txt
+Redirect Capacitors.txt
+Redirect Generators.txt
+
+Set Voltagebases=[12.66] ! One Voltage levels
+
+!solve
+Calcvoltagebases
+!Calcvoltagebases

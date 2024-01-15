@@ -1,0 +1,2 @@
+new monitor.src_501043803 element=line.501043803 terminal=1 mode=65 ppolar=no
+new energymeter.src_501043803 element=line.501043803 terminal=1 option=r action=c phasevolt=yes

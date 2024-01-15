@@ -1,0 +1,15 @@
+!new transformer.400181842ab phases=1 windings=2 buses=[400181830_regul.1.2, 400181830.1.2] kVs=[10.75, 10.75] kVAs=[(100 10000 *), (100 10000 *)] conns=[delta, delta] xhl=0.001 %loadloss=0.0001 %noloadloss=0.0
+!new transformer.400181842bc phases=1 windings=2 buses=[400181830_regul.2.3, 400181830.2.3] kVs=[10.75, 10.75] kVAs=[(100 10000 *), (100 10000 *)] conns=[delta, delta] xhl=0.001 %loadloss=0.0001 %noloadloss=0.0
+!new regcontrol.reg_400181842ab transformer=400181842ab winding=2 vreg=128.4 band=0.75 r=0.0 x=0.0 ptratio=83.33 ctprim=200 delay=120.0 tapdelay=2.0 tapnum=7
+!new regcontrol.reg_400181842bc transformer=400181842bc winding=2 vreg=128.4 band=0.75 r=0.0 x=0.0 ptratio=83.33 ctprim=200 delay=120.0 tapdelay=2.0 tapnum=7
+new line.400181842 bus1=400181844.1.2.3 bus2=400181830_regul.1.2.3 linecode=25__SCA__3Ph_OH__VENTRY_426_3ph phases=3 length=350.995720608137 units=m
+
+!new transformer.501042249ab phases=1 windings=2 buses=[501042255_regul.1.2, 501042255.1.2] kVs=[10.75, 10.75] kVAs=[(150 10000 *), (150 10000 *)] conns=[delta, delta] xhl=0.001 %loadloss=0.0001 %noloadloss=0.0
+!new transformer.501042249bc phases=1 windings=2 buses=[501042255_regul.2.3, 501042255.2.3] kVs=[10.75, 10.75] kVAs=[(150 10000 *), (150 10000 *)] conns=[delta, delta] xhl=0.001 %loadloss=0.0001 %noloadloss=0.0
+!new regcontrol.reg_501042249ab transformer=501042249ab winding=2 vreg=128.4 band=0.75 r=0.0 x=0.0 ptratio=83.33 ctprim=200 delay=120.0 tapdelay=2.0 tapnum=14
+!new regcontrol.reg_501042249bc transformer=501042249bc winding=2 vreg=128.4 band=0.75 r=0.0 x=0.0 ptratio=83.33 ctprim=200 delay=120.0 tapdelay=2.0 tapnum=14
+new line.501042249 bus1=2264091.1.2.3 bus2=501042255_regul.1.2.3 linecode=25__CU___3Ph_OH__VENTRY_426_3ph phases=3 length=202.997525024079 units=m
+
+! ADDITIONAL LINE ADDED TO BYPASS TRANSFORMERS JUAN 12/03/2021
+new line.JUANADDED bus1=501042255_regul.1.2.3 bus2=501042255.1.2.3 linecode=DUMMY__VENTRY_426_3ph phases=3 length=5 units=m
+new line.JUANADDED2 bus1=400181830_regul.1.2.3 bus2=400181830.1.2.3 linecode=DUMMY__VENTRY_426_3ph phases=3 length=5 units=m

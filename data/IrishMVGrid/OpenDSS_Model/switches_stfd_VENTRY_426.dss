@@ -1,0 +1,67 @@
+new line.501675506_switch bus1=503299949_switch1.1.2.3 bus2=503299949.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.2266645_switch bus1=2266646_switch1.1.2.3 bus2=2266646.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.2264229_switch bus1=2264228_switch1.1.2.3 bus2=2264228.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.506203032_switch bus1=506377797_switch1.1.2.3 bus2=506377797.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.506377800_recloser bus1=506377801_recloser1.1.2.3 bus2=506377801.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=false  ! rating=560 imterrupting_rating=10000.0
+new line.400164534_switch bus1=2264043_switch1.1.2.3 bus2=2264043.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.2264262_switch bus1=2264263_switch1.1.2.3 bus2=2264263.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.501231768_switch bus1=502412442_switch1.1.2.3 bus2=502412442.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.505832263_switch bus1=505832264_switch1.1.3 bus2=505832264.1.3 phases=2 switch=yes linecode=DUMMY__VENTRY_426_2ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.503267634_switch bus1=503267635_switch1.1.3 bus2=503267635.1.3 phases=2 switch=yes linecode=DUMMY__VENTRY_426_2ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.501706126_switch bus1=501706127_switch1.1.2.3 bus2=501706127.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.617669816_switch bus1=601420772_switch1.1.3 bus2=601420772.1.3 phases=2 switch=yes linecode=DUMMY__VENTRY_426_2ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.504012121_switch bus1=504012122_switch1.1.2.3 bus2=504012122.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.2264431_switch bus1=2264432_switch1.1.2.3 bus2=2264432.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.609811605_switch bus1=601337093_switch1.1.2.3 bus2=601337093.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.400182041_recloser bus1=601337006_recloser1.1.2.3 bus2=601337006.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=630 imterrupting_rating=10000.0
+new line.609811537_switch bus1=601337072_switch1.1.2.3 bus2=601337072.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.609576776_switch bus1=601331569_switch1.1.2.3 bus2=601331569.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.609576796_recloser bus1=601331367_recloser1.1.2.3 bus2=601331367.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=630 imterrupting_rating=10000.0
+new line.609576779_switch bus1=601331568_switch1.1.2.3 bus2=601331568.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.2264824_switch bus1=504164322_switch1.1.2.3 bus2=504164322.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.400182039_switch bus1=400182040_switch1.1.2.3 bus2=400182040.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.505103563_switch bus1=505103564_switch1.1.2.3 bus2=505103564.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.2264136_switch bus1=2264137_switch1.1.2.3 bus2=2264137.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.505057987_switch bus1=505057988_switch1.1.2.3 bus2=505057988.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.400182034_switch bus1=400182035_switch1.2.3 bus2=400182035.2.3 phases=2 switch=yes linecode=DUMMY__VENTRY_426_2ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.400181855_switch bus1=506016905_switch1.1.2.3 bus2=506016905.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.400187445_switch bus1=400187446_switch1.1.3 bus2=400187446.1.3 phases=2 switch=yes linecode=DUMMY__VENTRY_426_2ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.400181847_switch bus1=506016904_switch1.1.2.3 bus2=506016904.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.400181853_switch bus1=506016906_switch1.1.2.3 bus2=506016906.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.504164315_switch bus1=506078279_switch1.1.2.3 bus2=506078279.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.609697227_switch bus1=601334901_switch1.1.2.3 bus2=601334901.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.501352723_switch bus1=501352724_switch1.1.2.3 bus2=501352724.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.609697252_recloser bus1=601334910_recloser1.1.2.3 bus2=601334910.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=630 imterrupting_rating=10000.0
+new line.501665033_recloser bus1=501665034_recloser1.1.2.3 bus2=501665034.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=630 imterrupting_rating=10000.0
+new line.609697219_switch bus1=601334897_switch1.1.2.3 bus2=601334897.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.507066437_switch bus1=507066438_switch1.1.2.3 bus2=507066438.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.504164258_switch bus1=504164259_switch1.1.2.3 bus2=504164259.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.400181843_switch bus1=400181844_switch1.1.2.3 bus2=400181844.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.2264514_switch bus1=2264515_switch1.1.2.3 bus2=2264515.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.501665084_switch bus1=501665085_switch1.1.2.3 bus2=501665085.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.504164272_switch bus1=504164269_switch1.1.2.3 bus2=504164269.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.504967320_switch bus1=504967321_switch1.1.2.3 bus2=504967321.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.501665129_switch bus1=501665130_switch1.1.2.3 bus2=501665130.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.503264221_switch bus1=503264222_switch1.1.2.3 bus2=503264222.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.400181888_switch bus1=400181889_switch1.1.2.3 bus2=400181889.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.506998838_switch bus1=506998839_switch1.1.2.3 bus2=506998839.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.2265007_switch bus1=2265008_switch1.1.2.3 bus2=2265008.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.501665299_switch bus1=501665300_switch1.1.2.3 bus2=501665300.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.504967302_switch bus1=506016909_switch1.1.2.3 bus2=506016909.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.506998846_recloser bus1=506998847_recloser1.1.2.3 bus2=506998847.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=false  ! rating=630 imterrupting_rating=10000.0
+new line.501665294_switch bus1=501665295_switch1.1.2.3 bus2=501665295.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.506998844_switch bus1=506998845_switch1.1.2.3 bus2=506998845.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.2264552_switch bus1=2264553_switch1.1.2.3 bus2=2264553.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.2265015_switch bus1=2265016_switch1.1.2.3 bus2=2265016.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.501654362_switch bus1=506016898_switch1.1.2.3 bus2=506016898.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.501665339_switch bus1=501665340_switch1.1.2.3 bus2=501665340.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.505714135_switch bus1=505714136_switch1.1.2.3 bus2=505714136.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.501665502_switch bus1=501665503_switch1.1.2.3 bus2=501665503.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.609497770_switch bus1=601328739_switch1.1.2.3 bus2=601328739.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.501654219_switch bus1=501654220_switch1.1.2.3 bus2=501654220.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.609497797_recloser bus1=601330435_recloser1.1.2.3 bus2=601330435.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=630 imterrupting_rating=10000.0
+new line.609497749_switch bus1=601328729_switch1.1.2.3 bus2=601328729.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.501654258_switch bus1=501654259_switch1.1.2.3 bus2=501654259.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.400181921_switch bus1=400181922_switch1.1.2.3 bus2=400181922.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.506258073_switch bus1=506258074_switch1.1.2.3 bus2=506258074.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0
+new line.501654266_switch bus1=501654267_switch1.1.2.3 bus2=501654267.1.2.3 phases=3 switch=yes linecode=DUMMY__VENTRY_426_3ph enabled=true  ! rating=300.0 emer=300.0 withstand=300.0

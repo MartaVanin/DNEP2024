@@ -1,0 +1,36 @@
+!DISTRIBUTED GENERATORS DEFINITION 
+!New Generator.DG1 Bus1=1 kW=0 Model=1 
+New Generator.DG2 Bus1=2 kW=264.75 Model=1
+New Generator.DG3 Bus1=3 kW=264.75 Model=1
+New Generator.DG4 Bus1=4 kW=264.75 Model=1
+New Generator.DG5 Bus1=5 kW=264.75 Model=1
+New Generator.DG6 Bus1=6 kW=264.75 Model=1
+New Generator.DG7 Bus1=7 kW=264.75 Model=1
+New Generator.DG8 Bus1=8 kW=264.75 Model=1
+New Generator.DG9 Bus1=9 kW=264.75 Model=1
+New Generator.DG10 Bus1=10 kW=264.75 Model=1
+New Generator.DG11 Bus1=11 kW=264.75 Model=1
+New Generator.DG12 Bus1=12 kW=264.75 Model=1
+New Generator.DG13 Bus1=13 kW=264.75 Model=1
+New Generator.DG14 Bus1=14 kW=264.75 Model=1
+New Generator.DG15 Bus1=15 kW=264.75 Model=1
+New Generator.DG16 Bus1=16 kW=264.75 Model=1
+New Generator.DG17 Bus1=17 kW=264.75 Model=1
+New Generator.DG18 Bus1=18 kW=264.75 Model=1
+New Generator.DG19 Bus1=19 kW=264.75 Model=1
+New Generator.DG20 Bus1=20 kW=264.75 Model=1
+New Generator.DG21 Bus1=21 kW=264.75 Model=1
+New Generator.DG22 Bus1=22 kW=264.75 Model=1
+New Generator.DG23 Bus1=23 kW=264.75 Model=1
+New Generator.DG24 Bus1=24 kW=264.75 Model=1
+New Generator.DG25 Bus1=25 kW=264.75 Model=1
+New Generator.DG26 Bus1=26 kW=264.75 Model=1
+New Generator.DG27 Bus1=27 kW=264.75 Model=1
+New Generator.DG28 Bus1=28 kW=264.75 Model=1
+New Generator.DG29 Bus1=29 kW=264.75 Model=1
+New Generator.DG30 Bus1=30 kW=264.75 Model=1
+New Generator.DG31 Bus1=31 kW=264.75 Model=1
+New Generator.DG32 Bus1=32 kW=264.75 Model=1
+New Generator.DG33 Bus1=33 kW=264.75 Model=1
+
+

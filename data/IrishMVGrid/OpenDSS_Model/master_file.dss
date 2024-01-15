@@ -1,0 +1,28 @@
+clear
+
+CD "C:\Users\JuanC\Desktop\test\OpenDSS_OPF_FlexibilityPaper\FirstSimulationTargetYear\Ventry_7.5loadinc_250MEC\OpenDSS\OpenDSS\VENTRY_426"
+set defaultbasefrequency=50
+
+new circuit.VENTRY_426 bus1=VENTRY_426 pu=1.0 angle=0.0 basekv=10.7 r1=1e-6 x1=1e-6 r0=1e-6 x0=1e-6 ! r1=1.258 x1=3.146 r0=0.001 x0=13.7
+
+redirect line_codes_eq_dist_stfd_VENTRY_426.dss
+
+redirect loads_stfd_VENTRY_426.dss
+redirect prim_xfmrs_and_regs_stfd_VENTRY_426.dss
+redirect lines_stfd_VENTRY_426.dss
+redirect switches_stfd_VENTRY_426.dss
+redirect Generators_VENTRY.dss
+
+redirect monitors_stfd_VENTRY_426.dss
+
+set voltagebases=[10.7]
+calcvoltagebases
+
+buscoords bus_coordinates.dss
+
+set maxcontroliter=100
+
+/*
+solve mode=snap
+plot profile
+*/
