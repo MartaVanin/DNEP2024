@@ -11,12 +11,8 @@ function constraint_dnep_voltage_magnitude(pm::_PMD.AbstractUnbalancedPowerModel
     z_reg = _PMD.var(pm, 0, :z_reg, i) # is there a regulator (z=1) or not (z=0)
 
     for (idx, t) in [(idx,t) for (idx,t) in enumerate(terminals) if !grounded[idx]]
-        if isfinite(vmax[idx])
-            JuMP.@constraint(pm.model, w[t] <= wmax[idx]+extra_upper*z_reg)
-        end
-        if isfinite(vmin[idx])
-            JuMP.@constraint(pm.model, w[t] >= wmin[idx]+extra_lower*z_reg)
-        end
+        JuMP.@constraint(pm.model, w[t] <= wmax[idx]+extra_upper*z_reg)
+        JuMP.@constraint(pm.model, w[t] >= wmin[idx]-extra_lower*z_reg)
     end
 end
 """
@@ -73,7 +69,7 @@ end
 
 function constraint_battery_capacity(pm::_PMD.AbstractUnbalancedPowerModel, i::Int; nw::Int=_IM.nw_id_default)
     if nw == 1
-        
+
     end
 end
 
