@@ -1,0 +1,23 @@
+% Cost of infrastructure upgrades | https://www.power-grid.com/td/underground-vs-overhead-power-line-installation-cost-comparison/#gref
+%cost_overhead_lines = 150,000 + 15000 x MVArating % In euros per kilometer
+%cost_underground_lines = 300,000 + 30000 x MVArating %In euros per kilometer
+candidate_lines3=nonzeros(candidate_lines2);
+COST_VEC(1:size(candidate_lines3,1),1)=(150000.+15000.*candidate_lines3./1000).*linelength; 
+
+% Cost of voltage regulation | https://www.eaton.com/content/dam/eaton/products/medium-voltage-power-distribution-control-systems/voltage-regulators/voltage-regulators-vs-load-tap-changers-information-td225012en.pdf
+%cost_volt_reg = 300,000 % Per installation
+candidate_nodes3=nonzeros(candidate_nodes);
+COST_VEC(1+size(candidate_lines3,1):size(candidate_lines3,1)+size(candidate_nodes3,1),1)=300000;
+
+% Cost of energy storage |
+% https://www.nrel.gov/docs/fy21osti/79236.pdf | Fig. 5 shows component costs for energy and charge discharge rate, values taken correspond to year 2030
+%cost_kWh_Lithium_high = 195 * kWh_CAPACITY
+%cost_kWh_Lithium_mid = 150 * kWh_CAPACITY
+%cost_kWh_Lithium_low = 120 * kWh_CAPACITY
+%cost_kW_Lithium_high = 210 * Ch/DchRate
+%cost_kW_Lithium_mid = 200 * Ch/DchRate
+%cost_kW_Lithium_low = 160 * Ch/DchRate
+candidate_batt3=nonzeros(candidate_batt2);
+COST_VEC_high(1+size(candidate_lines3,1)+size(candidate_nodes3,1):size(candidate_lines3,1)+size(candidate_nodes3,1)+size(candidate_batt3,1),1)=210.*nonzeros(Ch_Dch_rates_batt)+195.*candidate_batt3;
+COST_VEC_low(1+size(candidate_lines3,1)+size(candidate_nodes3,1):size(candidate_lines3,1)+size(candidate_nodes3,1)+size(candidate_batt3,1),1)=160.*nonzeros(Ch_Dch_rates_batt)+120.*candidate_batt3;
+COST_VEC_mid(1+size(candidate_lines3,1)+size(candidate_nodes3,1):size(candidate_lines3,1)+size(candidate_nodes3,1)+size(candidate_batt3,1),1)=200.*nonzeros(Ch_Dch_rates_batt)+150.*candidate_batt3;
