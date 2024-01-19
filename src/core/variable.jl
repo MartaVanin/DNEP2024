@@ -34,48 +34,61 @@ function variable_mc_load_reactive(pm::_PMD.AbstractUnbalancedPowerModel;
 
     _IM.sol_component_value(pm, _PMD.pmd_it_sym, nw, :load, :qd, _PMD.ids(pm, nw, :load), qd)
 end
+"""
+Time-invariant investment variables
+"""
+function variable_all_investments(pm::_PMD.AbstractUnbalancedPowerModel)
+    variable_regulator(pm)
+    variable_auxiliary_battery_cap_cost(pm)
+    variable_auxiliary_battery_rat_cost(pm)
+    variable_infra_upgrade_fix(pm)
+    variable_infra_upgrade_var(pm)
+end
+"""
+Time-varying battery variables
+"""
+function variable_battery(pm::_PMD.AbstractUnbalancedPowerModel; nw::Int=_IM.nw_id_default)
+    variable_battery_soc(pm, nw = nw)
+    variable_battery_use(pm, nw = nw)
+end
 
 function variable_regulator(pm::_PMD.AbstractUnbalancedPowerModel)
-    # all buses can have one (except the slack), variable is binary
-    nw = 0 # investment is for all timeserie
-    z_reg = _PMD.var(pm)[:z_reg] = Dict(i => JuMP.@variable(pm.model,
+    # all buses can have one (except the slack and a virtual bus), variable is binary
+    nw = 1 # investment is for all timeserie
+    excluded = [i for i in _PMD.ids(pm, nw, :bus) if _PMD.ref(pm, nw, :bus, i, "bus_type") == 3 || occursin("virtual", _PMD.ref(pm, nw, :bus, i, "name"))] # rules out slack + an artificial bus
+    z_reg = _PMD.var(pm, nw)[:z_reg] = Dict(i => JuMP.@variable(pm.model,
             base_name="z_reg_$i",
             start = 0,
             binary = true
             ) 
-            for i in _PMD.ids(pm, 0, :bus) if 
-                (_PMD.ref(pm, 0, :bus, i, "bus_type") != 3 || occursin("virtual", _PMD.ref(pm, 0, :bus, i, "name"))) #this excludes the slackbus
+            for i in _PMD.ids(pm, 1, :bus) if i ∉ excluded
         )
-    _IM.sol_component_value(pm, _PMD.pmd_it_sym, nw, :bus, :z_reg, _PMD.ids(pm, nw, :bus), z_reg) # this is to include the variable values in the solution dictionary
+    _IM.sol_component_value(pm, _PMD.pmd_it_sym, nw, :bus, :z_reg, [i for i in _PMD.ids(pm, nw, :bus) if i ∉ excluded], z_reg) 
 end
-
-function variable_battery(pm::_PMD.AbstractUnbalancedPowerModel)
-    variable_battery_capacity(pm)
-    variable_battery_rating(pm)
-end
-
-function variable_battery_rating(pm::_PMD.AbstractUnbalancedPowerModel)
-    nw = 0 # investment is for all timeserie
-    z_bat_r = _PMD.var(pm)[:z_bat_r] = Dict(i => JuMP.@variable(pm.model,
-            base_name="z_bat_r_$i",
+"""
+Charging or discharging
+"""
+function variable_battery_use(pm::_PMD.AbstractUnbalancedPowerModel; nw::Int=_IM.nw_id_default)
+    z_bat_r = _PMD.var(pm, nw)[:z_bat_r] = Dict(i => JuMP.@variable(pm.model,
+            base_name="$(nw)_z_bat_r_$i",
             start = 0,
             lower_bound = 0.,
             upper_bound = 100., # could be "anything" though
             ) 
-            for i in _PMD.ids(pm, 0, :load)
+            for i in _PMD.ids(pm, nw, :load)
         )
     _IM.sol_component_value(pm, _PMD.pmd_it_sym, nw, :load, :z_bat_r, _PMD.ids(pm, nw, :load), z_bat_r) # this is to include the variable values in the solution dictionary
 end
 
-function variable_battery_capacity(pm::_PMD.AbstractUnbalancedPowerModel)
-    nw = 0 # investment is for all timeserie
-    z_bat_c = _PMD.var(pm)[:z_bat_c] = Dict(i => JuMP.@variable(pm.model,
-            base_name="z_bat_c_$i",
+function variable_battery_soc(pm::_PMD.AbstractUnbalancedPowerModel; nw::Int=_IM.nw_id_default)
+
+    z_bat_c = _PMD.var(pm, nw)[:z_bat_c] = Dict(i => JuMP.@variable(pm.model,
+            base_name="$(nw)_z_bat_c_$i",
             start = 0,
             lower_bound = 0.,
             upper_bound = 100., # could be "anything" though
             ) 
-            for i in _PMD.ids(pm, 0, :load)
+            for i in _PMD.ids(pm, nw, :load)
         )
     _IM.sol_component_value(pm, _PMD.pmd_it_sym, nw, :load, :z_bat_c, _PMD.ids(pm, nw, :load), z_bat_c) # this is to include the variable values in the solution dictionary
 end
@@ -83,15 +96,10 @@ end
 The auxiliary variables are needed to represent the maximum in the
 objective function
 """
-function variable_auxiliary_battery(pm::_PMD.AbstractUnbalancedPowerModel)
-    variable_auxiliary_battery_cap_cost(pm)
-    variable_auxiliary_battery_rat_cost(pm)
-end
-
 function variable_auxiliary_battery_rat_cost(pm::_PMD.AbstractUnbalancedPowerModel)
-    nw = 0 # investment is for all timeserie
+    nw = 1 # investment is for all timeserie
     # c_bat_r = # I decided not to report the value of the auxiliary variable, but can be changed ofc 
-    _PMD.var(pm)[:c_bat_r] = Dict(i => JuMP.@variable(pm.model,
+    _PMD.var(pm, nw)[:c_bat_r] = Dict(i => JuMP.@variable(pm.model,
             base_name="c_bat_r_$i",
             start = 0,
             lower_bound = 0.,
@@ -102,9 +110,9 @@ function variable_auxiliary_battery_rat_cost(pm::_PMD.AbstractUnbalancedPowerMod
 end
 
 function variable_auxiliary_battery_cap_cost(pm::_PMD.AbstractUnbalancedPowerModel)
-    nw = 0 # investment is for all timeserie
+    nw = 1 # investment is for all timeserie
     #c_bat_c = # I decided not to report the value of the auxiliary variable, but can be changed ofc
-    _PMD.var(pm)[:c_bat_c] = Dict(i => JuMP.@variable(pm.model,
+    _PMD.var(pm, nw)[:c_bat_c] = Dict(i => JuMP.@variable(pm.model,
             base_name="c_bat_c_$i",
             start = 0,
             lower_bound = 0.,
@@ -113,35 +121,29 @@ function variable_auxiliary_battery_cap_cost(pm::_PMD.AbstractUnbalancedPowerMod
             for i in _PMD.ids(pm, nw, :load)
         )
 end
-"""
-Infrastructure upgrade variables
-"""
-function variable_infra_upgrade(pm::_PMD.AbstractUnbalancedPowerModel)
-    variable_infra_upgrade_fix(pm)
-    variable_infra_upgrade_var(pm)
-end
 
 function variable_infra_upgrade_fix(pm::_PMD.AbstractUnbalancedPowerModel)
-    nw = 0 # investment is for all timeserie
-    z_upg_fix = _PMD.var(pm)[:z_upg_fix] = Dict(i => JuMP.@variable(pm.model,
+    nw = 1 # investment is for all timeserie
+    excluded =[i for i in _PMD.ids(pm, nw, :branch) if occursin("virtual", _PMD.ref(pm, nw, :branch, i, "name"))]
+    z_upg_fix = _PMD.var(pm, nw)[:z_upg_fix] = Dict(i => JuMP.@variable(pm.model,
             base_name="z_upg_fix_$i",
             start = 0,
             binary = true
             ) 
-            for i in _PMD.ids(pm, 0, :branch) if !occursin("virtual", _PMD.ref(pm, 0, :branch, i, "name")) # excludes virtual branche (transfo)
+            for i in _PMD.ids(pm, nw, :branch) if i ∉ excluded # excludes virtual branche (transfo)
         )
-    _IM.sol_component_value(pm, _PMD.pmd_it_sym, nw, :branch, :z_upg_fix, _PMD.ids(pm, nw, :branch), z_upg_fix) # this is to include the variable values in the solution dictionary
+    _IM.sol_component_value(pm, _PMD.pmd_it_sym, nw, :branch, :z_upg_fix, [i for i in _PMD.ids(pm, nw, :branch) if i ∉ excluded], z_upg_fix) # this is to include the variable values in the solution dictionary
 end
 
 function variable_infra_upgrade_var(pm::_PMD.AbstractUnbalancedPowerModel)
-    nw = 0 # investment is for all timeserie
-    z_upg_var = _PMD.var(pm)[:z_upg_var] = Dict(i => JuMP.@variable(pm.model,
+    nw = 1 # investment is for all timeserie
+    z_upg_var = _PMD.var(pm, nw)[:z_upg_var] = Dict(i => JuMP.@variable(pm.model,
             base_name="z_upg_var_$i",
             start = 0,
             lower_bound = 0.,
             upper_bound = 1e5
             ) 
-            for i in _PMD.ids(pm, 0, :branch) if !occursin("virtual", _PMD.ref(pm, 0, :branch, i, "name")) # excludes virtual branche (transfo)
+            for i in _PMD.ids(pm, nw, :branch) if !occursin("virtual", _PMD.ref(pm, nw, :branch, i, "name")) # excludes virtual branche (transfo)
         )
-    _IM.sol_component_value(pm, _PMD.pmd_it_sym, nw, :branch, :z_upg_var, _PMD.ids(pm, nw, :branch), z_upg_var) # this is to include the variable values in the solution dictionary
+    _IM.sol_component_value(pm, _PMD.pmd_it_sym, nw, :branch, :z_upg_var, [ i for i in _PMD.ids(pm, nw, :branch) if !occursin("virtual", _PMD.ref(pm, nw, :branch, i, "name"))], z_upg_var) # this is to include the variable values in the solution dictionary
 end

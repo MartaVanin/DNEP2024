@@ -2,6 +2,15 @@ function get_33bus_network()::Dict
     data = _PMD.parse_file(joinpath(BASE_DIR, "data/33Bus-Modified/OpenDSS_Model/Master33bus.dss"), data_model = _PMD.MATHEMATICAL)
     slackbus = [bus["index"] for (_, bus) in data["bus"] if bus["bus_type"] == 3][1]
     make_gens_negative_loads!(data, slackbus)
+    for (b, bus) in data["bus"]
+        bus["status"] = 1
+    end
+    for (_, gen) in data["gen"]
+        gen["status"] = 1
+    end
+    for (_, load) in data["load"]
+        load["status"] = 1
+    end
     return add_line_power_rating!(data, joinpath(BASE_DIR, "data/33Bus-Modified/OpenDSS_Model/LineLimits.csv"))
 end
 

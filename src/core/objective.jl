@@ -1,23 +1,26 @@
 function objective_minimize_cost_lowcost_proj(pm::_PMD.AbstractUnbalancedPowerModel)
+    nw = 1 # all investments are time-indep
     return JuMP.@objective(pm.model, Min,
-          sum(_PMD.var(pm, 0, :z_reg, i)*300000 for i in _PMD.ids(pm, 0, :bus))  # cost regulators
-         +sum(_PMD.var(pm, 0, :c_bat_r, i)*160+_PMD.var(pm, 0, :c_bat_c, i)*120 for i in _PMD.ids(pm, 0, :load)) # cost batteries
-         +sum(_PMD.var(pm, 0, :z_upg_fix, i)*150000+_PMD.var(pm, 0, :z_upg_var, i)*15000 for i in _PMD.ids(pm, 0, :branch)) # cost upgrades
+          sum(_PMD.var(pm, nw, :z_reg, i)*300000 for i in _PMD.ids(pm, nw, :bus) if _PMD.ref(pm, nw, :bus, i, "bus_type") != 3 && !occursin("virtual", _PMD.ref(pm, nw, :bus, i, "name")))  # cost regulators
+         +sum(_PMD.var(pm, nw, :c_bat_r, i)*160+_PMD.var(pm, nw, :c_bat_c, i)*120 for i in _PMD.ids(pm, nw, :load)) # cost batteries
+         +sum(_PMD.var(pm, nw, :z_upg_fix, i)*150000+_PMD.var(pm, nw, :z_upg_var, i)*15000 for i in _PMD.ids(pm, nw, :branch) if !occursin("virtual", _PMD.ref(pm, nw, :branch, i, "name"))) # cost upgrades
     )
 end
 
 function objective_minimize_cost_midcost_proj(pm::_PMD.AbstractUnbalancedPowerModel)
+    nw = 1 # all investments are time-indep
     return JuMP.@objective(pm.model, Min,
-          sum(_PMD.var(pm, 0, :z_reg, i)*300000 for i in _PMD.ids(pm, 0, :bus))  # cost regulators
-         +sum(_PMD.var(pm, 0, :c_bat_r, i)*200+_PMD.var(pm, 0, :c_bat_c, i)*150 for i in _PMD.ids(pm, 0, :load)) # cost batteries
-         +sum(_PMD.var(pm, 0, :z_upg_fix, i)*150000+_PMD.var(pm, 0, :z_upg_var, i)*15000 for i in _PMD.ids(pm, 0, :branch)) # cost upgrades
+          sum(_PMD.var(pm, nw, :z_reg, i)*300000 for i in _PMD.ids(pm, nw, :bus) if _PMD.ref(pm, nw, :bus, i, "bus_type") != 3 && !occursin("virtual", _PMD.ref(pm, nw, :bus, i, "name")))  # cost regulators
+         +sum(_PMD.var(pm, nw, :c_bat_r, i)*200+_PMD.var(pm, nw, :c_bat_c, i)*150 for i in _PMD.ids(pm, nw, :load)) # cost batteries
+         +sum(_PMD.var(pm, nw, :z_upg_fix, i)*150000+_PMD.var(pm, nw, :z_upg_var, i)*15000 for i in _PMD.ids(pm, nw, :branch) if !occursin("virtual", _PMD.ref(pm, nw, :branch, i, "name"))) # cost upgrades
     )
 end
 
 function objective_minimize_cost_highcost_proj(pm::_PMD.AbstractUnbalancedPowerModel)
+    nw = 1 # all investments are time-indep
     return JuMP.@objective(pm.model, Min,
-          sum(_PMD.var(pm, 0, :z_reg, i)*300000 for i in _PMD.ids(pm, 0, :bus))  # cost regulators
-         +sum(_PMD.var(pm, 0, :c_bat_r, i)*210+_PMD.var(pm, 0, :c_bat_c, i)*195 for i in _PMD.ids(pm, 0, :load)) # cost batteries
-         +sum(_PMD.var(pm, 0, :z_upg_fix, i)*150000+_PMD.var(pm, 0, :z_upg_var, i)*15000 for i in _PMD.ids(pm, 0, :branch)) # cost upgrades
+          sum(_PMD.var(pm, nw, :z_reg, i)*300000 for i in _PMD.ids(pm, nw, :bus) if _PMD.ref(pm, nw, :bus, i, "bus_type") != 3 && !occursin("virtual", _PMD.ref(pm, nw, :bus, i, "name")) )  # cost regulators
+         +sum(_PMD.var(pm, nw, :c_bat_r, i)*210+_PMD.var(pm, nw, :c_bat_c, i)*195 for i in _PMD.ids(pm, nw, :load)) # cost batteries
+         +sum(_PMD.var(pm, nw, :z_upg_fix, i)*150000+_PMD.var(pm, nw, :z_upg_var, i)*15000 for i in _PMD.ids(pm, nw, :branch) if !occursin("virtual", _PMD.ref(pm, nw, :branch, i, "name"))) # cost upgrades
     )
 end
