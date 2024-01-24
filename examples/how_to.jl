@@ -13,7 +13,7 @@ solver = _PMD.optimizer_with_attributes(Gurobi.Optimizer, "TimeLimit" => 300) #"
 
 # 33 bus network
 data = _DNEP.get_33bus_network()
-mn_data = _DNEP.add_timeseries_33bus!(data; resolution = 10000)
+mn_data = _DNEP.add_timeseries_33bus!(data; resolution = 3600)
 res = _DNEP.solve_milp_dnep(mn_data, _PMD.LinDist3FlowPowerModel, solver, multinetwork = true)
 
 # irish network
