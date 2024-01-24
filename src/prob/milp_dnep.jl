@@ -43,8 +43,8 @@ function build_mc_dnep(pm::_PMD.AbstractUBFModels)
         end
 
         for (i,branch) in _PMD.ref(pm, t, :branch)
-            # constraint_line_power_rating(pm, i, nw = t)
-            constraint_line_power_rating_brutal_linearization(pm, i, nw = t)
+            constraint_line_power_rating(pm, i, nw = t)
+            # constraint_line_power_rating_brutal_linearization(pm, i, nw = t)
         end
 
         for (i,bus) in _PMD.ref(pm, t, :bus)
