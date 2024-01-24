@@ -17,7 +17,7 @@ function add_timeseries_33bus!(data::Dict; resolution = 1)
                 "multinetwork" => true
             )
 
-    n_timesteps = Int(size(ts_gen,1) / resolution)      
+    n_timesteps = Int(round(size(ts_gen,1) / resolution))      
     for t in 1:n_timesteps
         t_idx = 1 + resolution * (t-1)
         mn_data["nw"]["$t"] = Dict{String, Any}()
@@ -59,8 +59,8 @@ function add_timeseries_irish!(data::Dict; resolution = 1)
                 "bus_lookup" => data["bus_lookup"]
             )
 
-    n_timesteps = Int(size(ts_gen,1) / resolution)  
-    for t in 1:n_time_steps
+            Int(round(size(ts_gen,1) / resolution)) 
+    for t in 1:n_timesteps
         t_idx = 1 + resolution * (t-1)
         mn_data["nw"]["$t"] = Dict{String, Any}()
         mn_data["nw"]["$t"] = deepcopy(data)
