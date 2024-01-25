@@ -21,6 +21,6 @@ function objective_minimize_cost_highcost_proj(pm::_PMD.AbstractUnbalancedPowerM
     return JuMP.@objective(pm.model, Min,
           sum(_PMD.var(pm, nw, :z_reg, i)*300000 for i in _PMD.ids(pm, nw, :bus) if _PMD.ref(pm, nw, :bus, i, "bus_type") != 3 && !occursin("virtual", _PMD.ref(pm, nw, :bus, i, "name")) )  # cost regulators
          +sum(_PMD.var(pm, nw, :c_bat_r, i)*210+_PMD.var(pm, nw, :c_bat_c, i)*195 for i in _PMD.ids(pm, nw, :load)) # cost batteries
-         +sum(_PMD.var(pm, nw, :z_upg_fix, i)*150000+_PMD.var(pm, nw, :z_upg_var, i)*15000 for i in _PMD.ids(pm, nw, :branch) if !occursin("virtual", _PMD.ref(pm, nw, :branch, i, "name"))) # cost upgrades
+         +sum(_PMD.var(pm, nw, :z_upg_fix, i) * _PMD.ref(pm, nw, :branch, i, "fixed_upgrade_cost") +_PMD.var(pm, nw, :z_upg_var, i) *  _PMD.ref(pm, nw, :branch, i, "varaible_upgrade_cost_per_pu") for i in _PMD.ids(pm, nw, :branch) if !occursin("virtual", _PMD.ref(pm, nw, :branch, i, "name"))) # cost upgrades
     )
 end

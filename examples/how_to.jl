@@ -18,5 +18,5 @@ res = _DNEP.solve_milp_dnep(mn_data, _PMD.LinDist3FlowPowerModel, solver, multin
 
 # irish network
 data_ir = _DNEP.get_irish_network()
-mn_data_ir = _DNEP.add_timeseries_irish!(data; resolution = 10000)
+mn_data_ir = _DNEP.add_timeseries_irish!(data; resolution = 60)
 res = _DNEP.solve_milp_dnep(mn_data_ir, _PMD.LinDist3FlowPowerModel, solver, multinetwork = true)

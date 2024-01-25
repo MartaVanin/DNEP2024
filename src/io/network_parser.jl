@@ -18,7 +18,7 @@ function get_irish_network()::Dict
     data = _PMD.parse_file(joinpath(BASE_DIR, "data/IrishMVGrid/OpenDSS_Model/master_file.dss"), data_model = _PMD.MATHEMATICAL)
     slackbus = [bus["index"] for (_, bus) in data["bus"] if bus["bus_type"] == 3][1]
     make_gens_negative_loads!(data, slackbus)
-    return add_line_power_rating!(data, joinpath(BASE_DIR, "data/IrishMVGrid/OpenDSS_Model/LineLimits.csv"))
+    return add_line_power_rating!(data, joinpath(BASE_DIR, "data/IrishMVGrid/OpenDSS_Model/LineLimits.csv"); irish = true)
 end
 
 """
@@ -60,13 +60,32 @@ end
 """
 These are needed for the thermal limits
 """
-function add_line_power_rating!(data::Dict, path_to_csv::String)::Dict
+function add_line_power_rating!(data::Dict, path_to_csv::String; irish = false)::Dict
     r = CSV.read(path_to_csv, _DF.DataFrame, header = 0)
     rate_per_unit = data["settings"]["sbase"]
+
+    if irish == true
+        fixed_cost_irish = CSV.read(joinpath(BASE_DIR, "data/IrishMVGrid/Candidates/infrastructure_upgrades_Costs.csv"), _DF.DataFrame, header = 0)
+        fixed_cost_irish = CSV.read("/Users/hergun/.julia/dev/DNEP2024/data/IrishMVGrid/Candidates/infrastructure_upgrades_Costs.csv", _DF.DataFrame, header = 0)
+        variable_cost_irish = CSV.read(joinpath(BASE_DIR, "data/IrishMVGrid/Candidates/infrastructure_upgrades_kVA.csv"), _DF.DataFrame, header = 0)
+    end
     for row in 1:size(r)[1]
         for (_, branch) in data["branch"]
             if branch["name"] == "$row"
                 branch["rate_a"] = fill(r[row, 1]/rate_per_unit, 3)
+            end
+
+            if irish == false
+                branch["fixed_upgrade_cost"] = 15000
+                branch["variable_upgrade_cost_per_pu"] = 15000 
+            else
+                if branch["index"] > length(fixed_cost_irish[1, :])
+                    branch["fixed_upgrade_cost"] = 15000
+                    branch["variable_upgrade_cost_per_pu"] = 15000 
+                else
+                    branch["fixed_upgrade_cost"] =  fixed_cost_irish[1, branch["index"]]
+                    branch["variable_upgrade_cost_per_pu"] = variable_cost_irish[1, branch["index"]]
+                end
             end
         end
     end
