@@ -66,7 +66,7 @@ function add_line_power_rating!(data::Dict, path_to_csv::String; irish = false):
 
     if irish == true
         fixed_cost_irish = CSV.read(joinpath(BASE_DIR, "data/IrishMVGrid/Candidates/infrastructure_upgrades_Costs.csv"), _DF.DataFrame, header = 0)
-        fixed_cost_irish = CSV.read("/Users/hergun/.julia/dev/DNEP2024/data/IrishMVGrid/Candidates/infrastructure_upgrades_Costs.csv", _DF.DataFrame, header = 0)
+        fixed_cost_irish = CSV.read(joinpath(BASE_DIR, "data/IrishMVGrid/Candidates/infrastructure_upgrades_Costs.csv"), _DF.DataFrame, header = 0)
         variable_cost_irish = CSV.read(joinpath(BASE_DIR, "data/IrishMVGrid/Candidates/infrastructure_upgrades_kVA.csv"), _DF.DataFrame, header = 0)
     end
     for row in 1:size(r)[1]
@@ -76,11 +76,11 @@ function add_line_power_rating!(data::Dict, path_to_csv::String; irish = false):
             end
 
             if irish == false
-                branch["fixed_upgrade_cost"] = 15000
+                branch["fixed_upgrade_cost"] = 150000
                 branch["variable_upgrade_cost_per_pu"] = 15000 
             else
                 if branch["index"] > length(fixed_cost_irish[1, :])
-                    branch["fixed_upgrade_cost"] = 15000
+                    branch["fixed_upgrade_cost"] = 150000
                     branch["variable_upgrade_cost_per_pu"] = 15000 
                 else
                     branch["fixed_upgrade_cost"] =  fixed_cost_irish[1, branch["index"]]
