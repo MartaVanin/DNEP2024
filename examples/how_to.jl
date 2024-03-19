@@ -8,15 +8,15 @@ import PowerModelsDistribution as _PMD
 using Gurobi
 using Cbc
 
-solver = _PMD.optimizer_with_attributes(Gurobi.Optimizer, "TimeLimit" => 300) #"seconds" => 60)#, "TimeLimit" => 60)
+solver = _PMD.optimizer_with_attributes(Gurobi.Optimizer, "TimeLimit" => 3600) #"seconds" => 60)#, "TimeLimit" => 60)
 
 
 # 33 bus network
-data = _DNEP.get_33bus_network()
-mn_data = _DNEP.add_timeseries_33bus!(data; resolution = 3600)
-res = _DNEP.solve_milp_dnep(mn_data, _PMD.LinDist3FlowPowerModel, solver, multinetwork = true)
+# data = _DNEP.get_33bus_network()
+# mn_data = _DNEP.add_timeseries_33bus!(data; resolution = 60)
+# res = _DNEP.solve_milp_dnep(mn_data, _PMD.LinDist3FlowPowerModel, solver, multinetwork = true)
 
 # irish network
 data_ir = _DNEP.get_irish_network()
-mn_data_ir = _DNEP.add_timeseries_irish!(data; resolution = 60)
+mn_data_ir = _DNEP.add_timeseries_irish!(data_ir; resolution = 60)
 res = _DNEP.solve_milp_dnep(mn_data_ir, _PMD.LinDist3FlowPowerModel, solver, multinetwork = true)
